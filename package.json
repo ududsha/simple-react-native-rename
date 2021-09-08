@@ -1,7 +1,7 @@
 {
-  "name": "react-native-rename",
-  "version": "2.9.0",
-  "description": "Rename react-native app with just one command",
+  "name": "simple-react-native-rename",
+  "version": "1.0.1", 
+  "description": "Rename visible name(only) and bundle id(optional) in react-native app with just one command",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",
@@ -10,7 +10,7 @@
     "relink": "npm unlink && npm run prepublish && npm link",
     "format": "prettier --write '**/*.{js,jsx}'",
     "lint": "eslint '**/*.{js,jsx}'",
-    "react-native-rename": "babel-node src/index.js",
+    "simple-react-native-rename": "babel-node src/index.js",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -22,9 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/junedomingo/react-native-rename.git"
+    "url": "git+https://github.com/ududsha/simple-react-native-rename.git"
   },
   "keywords": [
+    "simple",
     "react-native",
     "ios",
     "android",
@@ -33,15 +34,15 @@
     "react",
     "space"
   ],
-  "author": "June Domingo <junedomingo@gmail.com>",
+  "author": "Shamendra Sirisena <ududsha@gmail.com>",
   "license": "MIT",
   "bin": {
-    "react-native-rename": "lib/index.js"
+    "simple-react-native-rename": "lib/index.js"
   },
   "bugs": {
-    "url": "https://github.com/junedomingo/react-native-rename/issues"
+    "url": "https://github.com/ududsha/simple-react-native-rename/issues"
   },
-  "homepage": "https://github.com/junedomingo/react-native-rename#readme",
+  "homepage": "https://github.com/ududsha/simple-react-native-rename#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
     "colors": "^1.1.2",

@@ -10,7 +10,6 @@ import replace from 'node-replace';
 import shell from 'shelljs';
 import pjson from '../package.json';
 import path from 'path';
-import { foldersAndFiles } from './config/foldersAndFiles';
 import { filesToModifyContent } from './config/filesToModifyContent';
 import { bundleIdentifiers } from './config/bundleIdentifiers';
 import { loadAppConfig, loadAndroidManifest, __dirname, iosRequiredPaths } from './utils';
@@ -52,7 +51,6 @@ const cleanBuilds = () => {
 loadAppConfig()
   .then(appConfig => {
     const currentAppName = appConfig.name || (appConfig.expo && appConfig.expo.name);
-    const nS_CurrentAppName = currentAppName.replace(/\s/g, '');
 
     program
       .version(projectVersion)
@@ -60,11 +58,9 @@ loadAppConfig()
       .option('-b, --bundleID [value]', 'Set custom bundle identifier eg. "com.junedomingo.travelapp"')
       .action(argName => {
         const newName = argName || currentAppName;
-        const nS_NewName = newName.replace(/\s/g, '');
         const pattern = /^([\p{Letter}\p{Number}])+([\p{Letter}\p{Number}\s]+)$/u;
         const bundleID = program.bundleID ? program.bundleID.toLowerCase() : null;
         let newBundlePath;
-        const listOfFoldersAndFiles = foldersAndFiles(currentAppName, newName);
         const listOfFilesToModifyContent = filesToModifyContent(currentAppName, newName, projectName);
 
         if (bundleID) {
@@ -103,28 +99,6 @@ loadAppConfig()
 
             resolve();
           });
-
-        // Move files and folders from ./config/foldersAndFiles.js
-        const resolveFoldersAndFiles = () => {
-          const promises = listOfFoldersAndFiles.map(element => {
-            const dest = element.replace(new RegExp(nS_CurrentAppName, 'i'), nS_NewName);
-
-            const successMsg = `/${dest} ${colors.green('RENAMED')}`;
-
-            const src = path.join(__dirname, element);
-            const dst = path.join(__dirname, dest);
-
-            const move = shell.mv('-f', src, dst);
-
-            if (move.code === 0) {
-              console.log(successMsg);
-            } else {
-              console.log(colors.yellow("Ignore above error if this file doesn't exist"));
-            }
-          });
-
-          return Promise.all(promises);
-        };
 
         // Modify file content from ./config/filesToModifyContent.js
         const resolveFilesToModifyContent = () =>
@@ -244,7 +218,6 @@ loadAppConfig()
         const run = () =>
           Promise.resolve()
             .then(validatePaths)
-            .then(resolveFoldersAndFiles)
             .then(resolveFilesToModifyContent)
             .then(resolveJavaFiles)
             .then(gitUpdateChanges)
