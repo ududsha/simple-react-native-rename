@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import cheerio from 'cheerio';
 
-const devTestRNProject = ''; // For Development eg '/Users/junedomingo/Desktop/RN49'
+const devTestRNProject = '';
 export const __dirname = devTestRNProject || process.cwd();
 
 function readFile(filePath) {

@@ -55,7 +55,7 @@ loadAppConfig()
     program
       .version(projectVersion)
       .arguments('[newName]')
-      .option('-b, --bundleID [value]', 'Set custom bundle identifier eg. "com.junedomingo.travelapp"')
+      .option('-b, --bundleID [value]', 'Set custom bundle identifier eg. "com.test.testapp"')
       .action(argName => {
         const newName = argName || currentAppName;
         const pattern = /^([\p{Letter}\p{Number}])+([\p{Letter}\p{Number}\s]+)$/u;

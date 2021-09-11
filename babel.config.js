@@ -1,5 +1,5 @@
 const config = {
-  presets: ["@babel/preset-env"]
+  presets: ['@babel/preset-env'],
 };
 
 module.exports = config;
