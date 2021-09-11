@@ -29,13 +29,13 @@ Instead of that simple-react-native-rename will change only the visible name jus
 ## Install
 
 ```sh
-npm install
+npm install --save simple-react-native-rename
 ```
 
 ## Usage
 You can change the package.js app 'name' and use below script to rename easily. (Optionally you can add bundle identifier also when you have a new bundle identifier)
 ```sh
-	"scripts": {
+"scripts": {
     "app:rename": "simple-react-native-rename '$npm_package_name'",
   }
 ```
