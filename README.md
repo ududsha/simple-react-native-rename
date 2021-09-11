@@ -17,7 +17,12 @@
   </a>
 </p>
 
-> Rename visible name(only) and bundle id(optional) in react-native app with just one command
+> Rename visible name(only) and bundle id(optional) in react-native app with just one command.
+
+In other words this package will not rename all the files and fields(ie: package names in android etc) which react-native-rename package is doing. 
+Instead of that simple-react-native-rename will change only the visible name just below the App Icon.(optinally it can change bundle identifier). 
+
+#### This was a requirement for me while im working in my dev and sit environments, *just to change the visible name of the app*.
 
 ### 🏠 [Homepage](https://github.com/ududsha/simple-react-native-rename#readme)
 
